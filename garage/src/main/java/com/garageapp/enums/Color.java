@@ -1,4 +1,4 @@
-package com.garageapp.color;
+package com.garageapp.enums;
 
 public enum Color {
     RED,

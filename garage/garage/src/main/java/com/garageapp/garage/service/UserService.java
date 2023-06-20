@@ -3,16 +3,12 @@ package com.garageapp.garage.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.garageapp.validators.UserValidator;
+
 import com.garageapp.garage.model.User;
 import com.garageapp.garage.repository.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.garageapp.garage.validators.UserValidator;
 
 @Service
 public class UserService {
@@ -47,15 +43,14 @@ public class UserService {
         if (isValidUser) {
             Optional<User> optionalExistingUser = userRepository.findById(id);
             if (optionalExistingUser.isPresent()) {
-                // User existingUser = new User(user.getName(), user.getLastname(), user.getPhone(), user.getEmail(), user.getCreatedAt(), user.getUpdatedAt(), false);
-                //optionalExistingUser.get()
-                // existingUser(11223357);
-                // existingUser.setName(user.getName());
-                // existingUser.setLastname(user.getLastname());
-                // existingUser.setPhone(user.getPhone());
-                // existingUser.setEmail(user.getEmail());
-                // existingUser.setCreatedAt(user.getCreatedAt());
-                // existingUser.setUpdatedAt(user.getUpdatedAt());
+                User existingUser = optionalExistingUser.get();
+
+                existingUser.setName(user.getName());
+                existingUser.setLastname(user.getLastname());
+                existingUser.setPhone(user.getPhone());
+                existingUser.setEmail(user.getEmail());
+                existingUser.setCreated_at(user.getCreatedAt());
+                existingUser.setUpdated_at(user.getUpdatedAt    ());
 
                 userRepository.save(existingUser);
 

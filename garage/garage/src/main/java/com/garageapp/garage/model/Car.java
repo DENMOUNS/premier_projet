@@ -48,7 +48,11 @@ public class Car {
         this.reservationDate = null;
     }
 
-    public void validate() {
+    public Car(String model2, String brand2, int year2, boolean isReserved2, Object reservedBy2,
+			Object reservationDate2) {
+	}
+
+	public void validate() {
         if (model == null || model.isEmpty()) {
             throw new IllegalArgumentException("Le modèle de la voiture est requis.");
         }

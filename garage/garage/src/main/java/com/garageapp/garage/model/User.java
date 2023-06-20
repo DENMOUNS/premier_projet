@@ -18,27 +18,31 @@ import lombok.Setter;
 @Setter
 public class User {
 
-    public User(String name, String lastname, String phone, String createdAt, String updatedAt, String email) {
-		// this.id = id;
-		this.name = name;
-		this.lastname = lastname;
-		this.phone = phone;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.email = email;
-	}
-
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String lastname;
     private String phone;
-    private String createdAt;
-    private String updatedAt;
+    private String created_at;
+    private String updated_at;
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Reservation> reservations;
+    public String getCreatedAt() {
+        return created_at;
+    }
 
+    public void setCreatedAt(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdatedAt() {
+        return updated_at;
+    }
+
+    public void setUpdatedAt(String updated_at) {
+        this.updated_at = updated_at;
+    }
 }

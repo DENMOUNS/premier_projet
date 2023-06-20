@@ -21,35 +21,37 @@ public class CarTest {
     private UserRepository userRepository;
 
     private Car car;
+    String aventador = "Aventador";
+    String Lamborghini = "Lamborghini";
 
     @BeforeEach
     public void setUp() {
-        car.validate(); // Valide la voiture avant de l'utiliser
-        car = new Car("Model", "Brand", 2023);
+        car = new Car("Model", "Brand", 2023, false, null, null); // Instancie d'abord l'objet car
+        car.validate(); // Valide la voiture après l'instanciation
     }
 
     @Test
     public void testGetModel() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
         car.validate(); // Valide la voiture avant de l'utiliser
-        assertThat(car.getModel()).isEqualTo("Aventador");
+        assertThat(car.getModel()).isEqualTo(aventador);
     }
 
     @Test
     public void testGetBrand() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
-        assertThat(car.getBrand()).isEqualTo("Lamborghini");
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
+        assertThat(car.getBrand()).isEqualTo(Lamborghini);
     }
 
     @Test
     public void testGetYear() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
         assertThat(car.getYear()).isEqualTo(2022);
     }
 
     @Test
     public void testSetModel() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
         car.setModel("Huracan");
         assertThat(car.getModel()).isEqualTo("Huracan");
     }
@@ -57,14 +59,17 @@ public class CarTest {
 
     @Test
     public void testSetBrand() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
         car.setBrand("Ferrari");
         assertThat(car.getBrand()).isEqualTo("Ferrari");
     }
 
+    /**
+     * 
+     */
     @Test
     public void testSetYear() {
-        Car car = new Car("Aventador", "Lamborghini", 2022);
+        Car car = new Car(aventador, Lamborghini, 2022, false, null, null);
         car.setYear(2023);
         assertThat(car.getYear()).isEqualTo(2023);
     }

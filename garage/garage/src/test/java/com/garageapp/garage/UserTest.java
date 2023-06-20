@@ -2,7 +2,8 @@ package com.garageapp.garage;
 
 import com.garageapp.garage.model.User;
 import com.garageapp.garage.repository.UserRepository;
-import com.garageapp.validators.UserValidator;
+import com.garageapp.garage.validators.UserValidator;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -39,8 +40,8 @@ class UserTest {
         user.setLastname("Doe");
         user.setPhone("12345678");
         user.setEmail("john.doe@example.com");
-        user.setCreatedAt("01-01-2023");
-        user.setUpdatedAt("01-01-2023");
+        user.setCreated_at("01-01-2023");
+        user.setUpdated_at("01-01-2023");
 
         boolean isValid = UserValidator.validateUser(user);
 
@@ -55,8 +56,8 @@ class UserTest {
         user.setLastname("Doe");
         user.setPhone("12345678");
         user.setEmail("john.doe@example.com");
-        user.setCreatedAt("01-01-2023");
-        user.setUpdatedAt("01-01-2023");
+        user.setCreated_at("01-01-2023");
+        user.setUpdated_at("01-01-2023");
 
         boolean isValid = UserValidator.validateUser(user);
 
@@ -71,8 +72,8 @@ class UserTest {
         user.setLastname("Doe");
         user.setPhone("12345678");
         user.setEmail("john.doe.example.com");
-        user.setCreatedAt("01-01-2023");
-        user.setUpdatedAt("01-01-2023");
+        user.setCreated_at("01-01-2023");
+        user.setUpdated_at("01-01-2023");
 
         boolean isValid = UserValidator.validateUser(user);
 
@@ -87,8 +88,8 @@ class UserTest {
         user.setLastname("Doe");
         user.setPhone("12345678");
         user.setEmail("john.doe@example.com");
-        user.setCreatedAt("01-01-2023");
-        user.setUpdatedAt("01-01-2023");
+        user.setCreated_at("01-01-2023");
+        user.setUpdated_at("01-01-2023");
 
         when(userRepository.save(user)).thenReturn(user);
 
@@ -107,8 +108,8 @@ class UserTest {
         existingUser.setLastname("Doe");
         existingUser.setPhone("12345678");
         existingUser.setEmail("john.doe@example.com");
-        existingUser.setCreatedAt("01-01-2023");
-        existingUser.setUpdatedAt("01-01-2023");
+        existingUser.setCreated_at("01-01-2023");
+        existingUser.setUpdated_at("01-01-2023");
 
         User updatedUser = new User();
         updatedUser.setId(userId);
@@ -116,8 +117,8 @@ class UserTest {
         updatedUser.setLastname("Smith");
         updatedUser.setPhone("87654321");
         updatedUser.setEmail("jane.smith@example.com");
-        updatedUser.setCreatedAt("01-01-2023");
-        updatedUser.setUpdatedAt("02-01-2023");
+        updatedUser.setCreated_at("01-01-2023");
+        updatedUser.setUpdated_at("02-01-2023");
 
         doReturn(Optional.of(existingUser)).when(userRepository).findById(userId);
         doReturn(updatedUser).when(userRepository).save(updatedUser);
